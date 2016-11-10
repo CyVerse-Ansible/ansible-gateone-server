@@ -31,8 +31,10 @@ Role Variables
 | GATEONE_API_KEY         | yes      |                                       |         | See GateOne docs                                        |
 | GATEONE_API_SECRET      | yes      |                                       |         | See GateOne docs
 
+The code assumes that your SSL certificate and private key will be stored in files/. It is *strongly encouraged* to encrypt your SSL private key with `ansible-vault`.
+
 GATEONE_ORIGINS variable is documented [here](http://liftoff.github.io/GateOne/About/configuration.html?highlight=origins#cmdoption--origins).
-GATEONE_API_KEY and GATEONE_API_SECRET are documented [here]()
+GATEONE_API_KEY and GATEONE_API_SECRET are documented [here](https://liftoff.github.io/GateOne/Developer/embedding_api_auth.html#generate-an-api-key-secret)
 
 Dependencies
 ------------
