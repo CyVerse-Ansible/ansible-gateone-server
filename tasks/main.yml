@@ -57,7 +57,7 @@
     chdir: /opt/gateone
 
 - name: Install the GateOne systemd service
-  file:
+  copy:
     remote_src: true
     src: /opt/GateOne/scripts/init/gateone.service
     dest: /etc/systemd/system/gateone.service
