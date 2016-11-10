@@ -68,13 +68,13 @@
     dest: "{{ item }}"
     state: directory
   with_items:
-    - "/etc/gateone/conf.d/"
-    - "/etc/gateone/ssl/"
+    - /etc/gateone/conf.d/
+    - /etc/gateone/ssl/
 
 - name: Template GateOne configuration files
   template:
     src: "{{ item }}.j2"
-    dest: /etc/gateone/conf.d/"{{ item }}"
+    dest: /etc/gateone/conf.d/{{ item }}
   with_items:
     - 10server.conf
     - 20authentication.conf
