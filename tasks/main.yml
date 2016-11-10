@@ -1,0 +1,83 @@
+---
+# Define firewall rules here, or leave them separate?
+
+- name: install dependencies
+  apt:
+    name: "{{ item }}"
+    state: installed
+    update_cache: yes
+  with_items:
+    - python-pip
+    - build-essential
+    - python-dev
+    - git
+    - python-imaging
+    - dtach
+    - nginx
+
+- name: Copy SSL private key
+  copy:
+    src: "{{ SSL_PRIVKEY_NAME }}"
+    dest: /etc/ssl/private/{{ SSL_PRIVKEY_NAME }}
+
+- name: Copy SSL certificate
+  copy:
+    src: "{{ SSL_CERT_NAME }}"
+    dest: /etc/ssl/certs/{{ SSL_CERT_NAME }}
+
+- name: Set Nginx configuration
+  template:
+    src: gateone-ssl-nginx.conf.j2
+    dest: /etc/nginx/sites-enabled/default
+  notify: restart nginx
+
+- name: Set Nginx configuration for GateOne
+  copy:
+    src: gateone-nginx-location.conf
+    dest: /etc/nginx/locations/gateone-nginx-location.conf
+  notify: restart nginx
+
+- name: Install tornado
+  pip:
+    name: tornado
+
+- name: Clone GateOne source
+  git:
+    repo: "{{ GATEONE_REPO }}"
+    dest: /opt/gateone
+
+- name: Install GateOne
+  shell: python setup.py install
+  args:
+    chdir: /opt/gateone
+
+- name: Install the GateOne systemd service
+  file:
+    remote_src: true
+    src: /opt/GateOne/scripts/init/gateone.service
+    dest: /etc/systemd/system/gateone.service
+
+# Is this not needed if we create directories when templating out config files?
+- name: Create GateOne configuration directories
+  file:
+    dest: "{{ item }}"
+    state: directory
+  with_items:
+    - "/etc/gateone/conf.d/"
+    - "/etc/gateone/ssl/"
+
+- name: Template GateOne configuration files
+  template:
+    src: "{{ item }}.j2"
+    dest: /etc/gateone/conf.d/"{{ item }}"
+  with_items:
+    - 10server.conf
+    - 20authentication.conf
+    - 50terminal.conf
+    - ssh_config_global
+
+- name: Enable and start GateOne service
+  service:
+    name: gateone
+    enabled: yes
+    state: started
