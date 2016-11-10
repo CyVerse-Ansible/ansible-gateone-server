@@ -22,8 +22,8 @@ Role Variables
 | Variable                | Required | Default                               | Choices | Comments                                                |
 |-------------------------|----------|---------------------------------------|---------|---------------------------------------------------------|
 | GATEONE_REPO            | no       | https://github.com/edwins/gateone.git |         |                                                         |
+| SSL_CERT_NAME           | no       | snakeoil.crt                          |         | Name of your SSL certificate + CA chain in files/       |
 | SSL_PRIVKEY_NAME        | no       | snakeoil.key                          |         | Name of your SSL certificate private key file in files/ |
-| SSL_CERT_NAME           | no       | snakeoil.crt                          |         | Name of your SSL certificate in files/                  |
 | COOKIE_SECRET           | yes      | coookie-crisp                         |         | Secret to use for cookies                               |
 | GATEONE_ORIGINS         | no       | '["localhost", "127.0.0.1"]'          |         | Python-style list of allowed origins (see GateOne docs) |
 | GATEONE_SERVER_NAME     | yes      | myserver.com                          |         | Name of your gateone host                               |
@@ -31,15 +31,14 @@ Role Variables
 | GATEONE_API_KEY         | yes      |                                       |         | See GateOne docs                                        |
 | GATEONE_API_SECRET      | yes      |                                       |         | See GateOne docs
 
-The code assumes that your SSL certificate and private key will be stored in files/. It is *strongly encouraged* to encrypt your SSL private key with `ansible-vault`.
+The code assumes that your SSL certificate and private key will be stored in files/. If you store your SSL private key in version contron, it is strongly encouraged that you encrypt it with `ansible-vault`.
 
 GATEONE_ORIGINS variable is documented [here](http://liftoff.github.io/GateOne/About/configuration.html?highlight=origins#cmdoption--origins).
 GATEONE_API_KEY and GATEONE_API_SECRET are documented [here](https://liftoff.github.io/GateOne/Developer/embedding_api_auth.html#generate-an-api-key-secret)
 
 Dependencies
 ------------
-
-None
+Your SSL certificate + CA chain (as one PEM-encoded file), and private key (as another PEM-encoded file), should live in a location accessible from where you run the role. Refer to these paths in SSL_CERT_NAME and SSL_PRIVKEY_NAME.
 
 Example Playbook
 ----------------
