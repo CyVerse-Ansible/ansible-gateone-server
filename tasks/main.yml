@@ -59,7 +59,7 @@
 - name: Install the GateOne systemd service
   copy:
     remote_src: true
-    src: /opt/GateOne/scripts/init/gateone.service
+    src: /opt/gateone/scripts/init/gateone.service
     dest: /etc/systemd/system/gateone.service
 
 # Is this not needed if we create directories when templating out config files?
