@@ -86,3 +86,9 @@
     name: gateone
     enabled: yes
     state: restarted
+
+- name: Add public key for Atmosphere server's root user to authorized_keys
+  authorized_key:
+    user: root
+    key: "{{ ATMO_ROOT_SSH_PUBKEY }}"
+  when: ATMO_ROOT_SSH_PUBKEY is defined
