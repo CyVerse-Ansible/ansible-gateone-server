@@ -19,9 +19,8 @@ server {
     charset utf-8;
 
     ssl on;
-    ssl_certificate /etc/ssl/certs/{{ SSL_CERT_NAME }};
-    #ssl_certificate /etc/ssl/certs/iplantc.org.crt;
-    ssl_certificate_key /etc/ssl/private/{{ SSL_PRIVKEY_NAME }};
+    ssl_certificate /etc/ssl/certs/gateone.crt;
+    ssl_certificate_key /etc/ssl/private/gateone.key;
 
     ssl_ciphers 'AES128+EECDH:AES128+EDH';
 

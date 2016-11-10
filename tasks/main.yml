@@ -18,12 +18,12 @@
 - name: Copy SSL private key
   copy:
     src: "{{ SSL_PRIVKEY_NAME }}"
-    dest: /etc/ssl/private/
+    dest: /etc/ssl/private/gateone.key
 
 - name: Copy SSL certificate
   copy:
     src: "{{ SSL_CERT_NAME }}"
-    dest: /etc/ssl/certs/
+    dest: /etc/ssl/certs/gateone.crt
 
 - name: Set Nginx configuration
   template:
