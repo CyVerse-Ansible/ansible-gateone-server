@@ -31,6 +31,11 @@
     dest: /etc/nginx/sites-enabled/default
   notify: restart nginx
 
+- name: Nginx locations directory created
+  file:
+    path: /etc/nginx/locations
+    state: directory
+
 - name: Set Nginx configuration for GateOne
   copy:
     src: gateone-nginx-location.conf
