@@ -85,4 +85,4 @@
   service:
     name: gateone
     enabled: yes
-    state: started
+    state: restarted
