@@ -1,7 +1,7 @@
 GateOne Server
 =========
 
-Installs GateOne server. Galaxy-ized version of https://github.com/cyverse/gateone-server-ansible. Intended to be used with Atmosphere, may include some CyVerse-isms, probably not what you want if
+Installs GateOne server. Galaxy-ized version of https://github.com/cyverse/gateone-server-ansible. Intended to be used with [Atmosphere](http://github.com/iplantcollaborativeopensource/atmosphere), may include some CyVerse-isms, probably not what you want if you are deploying GateOne for other applications.
 
 ## Todo
 - Set restricted file permissions on SSL private key, only accessible to Nginx and GateOne services
