@@ -7,6 +7,7 @@ Installs GateOne server. Galaxy-ized version of https://github.com/cyverse/gateo
 - Set restricted file permissions on SSL private key, only accessible to Nginx and GateOne services
 - Generate strong, random COOKIE_SECRET if deployer does not specify it
 - Generate and set diffie hellman parameters for Nginx
+- Build test coverage beyond basic syntax checking
 
 [![Build Status](https://travis-ci.org/CyVerse-Ansible/ansible-gateone-server.svg?branch=master)](https://travis-ci.org/CyVerse-Ansible/ansible-gateone-server)
 [![Ansible Galaxy](https://img.shields.io/badge/ansible--galaxy-gateone--server-blue.svg)](https://galaxy.ansible.com/CyVerse-Ansible/gateone-server/)

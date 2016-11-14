@@ -30,7 +30,7 @@ script:
   - "sudo docker exec test_dummy ansible-playbook /etc/ansible/roles/role_under_test/tests/test.yml -i tests/inventory --syntax-check"
 
   # 2. Run playbook to execute role
-  - "sudo docker exec test_dummy ansible-playbook /etc/ansible/roles/role_under_test/tests/test.yml -i tests/inventory --connection=local"
+  # - "sudo docker exec test_dummy ansible-playbook /etc/ansible/roles/role_under_test/tests/test.yml -i tests/inventory --connection=local"
 
   # 3. HERE, WRITE SOME TESTS to verify that your role has produced the desired
   # effect on the target system. Your tests should be bash commands that
@@ -43,11 +43,11 @@ script:
   #   || (echo 'Test for role result: fail' && exit 1)
 
   # 4. Idempotence test (run playbook again to confirm nothing changes)
-  - >
-    sudo docker exec test_dummy ansible-playbook /etc/ansible/roles/role_under_test/tests/test.yml -i tests/inventory --connection=local
-    | grep -q 'changed=0.*failed=0'
-    && (echo 'Idempotence test: pass' && exit 0)
-    || (echo 'Idempotence test: fail' && exit 1)
+  # - >
+  #   sudo docker exec test_dummy ansible-playbook /etc/ansible/roles/role_under_test/tests/test.yml -i tests/inventory --connection=local
+  #   | grep -q 'changed=0.*failed=0'
+  #   && (echo 'Idempotence test: pass' && exit 0)
+  #   || (echo 'Idempotence test: fail' && exit 1)
 
 
 notifications:
