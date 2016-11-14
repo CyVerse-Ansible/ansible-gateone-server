@@ -20,6 +20,8 @@ None
 Role Variables
 --------------
 
+Note that some variables indicated as "Required" below are defined in `defaults/main.yml`, only so that this role passes automated tests. These variables still must be overridden in order to deploy a working GateOne server.
+
 | Variable                | Required | Default                               | Choices | Comments                                                |
 |-------------------------|----------|---------------------------------------|---------|---------------------------------------------------------|
 | GATEONE_REPO            | no       | https://github.com/edwins/gateone.git |         |                                                         |

@@ -3,6 +3,8 @@ SSL_PRIVKEY_NAME: snakeoil.key
 SSL_CERT_NAME: snakeoil.crt
 COOKIE_SECRET: "coookie-crisp"
 GATEONE_ORIGINS: '["localhost", "127.0.0.1"]'
-GATEONE_SERVER_NAME: myserver.com
+GATEONE_SERVER_NAME: changeme.com
 NOHOSTKEYCHECK_PATTERN: "192.168.1.*"
 GATEONE_REPO: https://github.com/edwins/gateone.git
+GATEONE_API_KEY: changeme
+GATEONE_API_SECRET: changeme
