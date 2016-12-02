@@ -93,4 +93,4 @@
     user: root
     key: "{{ item }}"
   when: ATMO_ROOT_SSH_PUBKEYS is defined
-  with_items: ATMO_ROOT_SSH_PUBKEYS
+  with_items: "{{ ATMO_ROOT_SSH_PUBKEYS }}"
