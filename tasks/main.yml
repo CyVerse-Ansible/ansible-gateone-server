@@ -88,8 +88,9 @@
     enabled: yes
     state: restarted
 
-- name: Add public key for Atmosphere server's root user to authorized_keys
+- name: Add public keys for Atmosphere servers to authorized_keys
   authorized_key:
     user: root
-    key: "{{ ATMO_ROOT_SSH_PUBKEY }}"
-  when: ATMO_ROOT_SSH_PUBKEY is defined
+    key: "{{ item }}"
+  when: ATMO_ROOT_SSH_PUBKEYS is defined
+  with_items: ATMO_ROOT_SSH_PUBKEYS

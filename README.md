@@ -34,14 +34,14 @@ Note that some variables indicated as "Required" below are defined in `defaults/
 | NOHOSTKEYCHECK_PATTERN  | yes      | 192.168.1.*                           |         | ssh_config-style host pattern to skip host key checking |
 | GATEONE_API_KEY         | yes      |                                       |         | See GateOne docs                                        |
 | GATEONE_API_SECRET      | yes      |                                       |         | See GateOne docs                                        |
-| ATMO_ROOT_SSH_PUBKEY    | no       |                                       |         | SSH public key for root user on Atmosphere server       |
+| ATMO_ROOT_SSH_PUBKEYS   | no       |                                       |         | List of root public keys for Atmosphere servers         |
 
 The code assumes that your SSL certificate and private key will be stored in files/. If you store your SSL private key in version contron, it is strongly encouraged that you encrypt it with `ansible-vault`.
 
 GATEONE_ORIGINS variable is documented [here](http://liftoff.github.io/GateOne/About/configuration.html?highlight=origins#cmdoption--origins).
 GATEONE_API_KEY and GATEONE_API_SECRET are documented [here](https://liftoff.github.io/GateOne/Developer/embedding_api_auth.html#generate-an-api-key-secret)
 
-ATMO_ROOT_SSH_PUBKEY, if defined, is inserted in the root user's authorized_keys file on the GateOne server. This allows Atmosphere to SSH to GateOne in order to insert users' SSH keypairs.
+ATMO_ROOT_SSH_PUBKEYS, if defined, are inserted in the root user's authorized_keys file on the GateOne server. This allows Atmosphere to SSH to GateOne in order to insert users' SSH keypairs.
 
 Dependencies
 ------------
