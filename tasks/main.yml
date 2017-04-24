@@ -94,3 +94,9 @@
     key: "{{ item }}"
   when: ATMO_ROOT_SSH_PUBKEYS is defined
   with_items: "{{ ATMO_ROOT_SSH_PUBKEYS }}"
+
+- name: Allow HTTPS port through firewall
+  ufw:
+    rule: allow
+    port: 443
+    proto: tcp
